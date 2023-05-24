@@ -8,8 +8,6 @@ from collections import Counter
 
 df = pd.read_csv(r"traveleng-cleaned2.csv")
 
-nltk.download('stopwords')
-
 def preprocess_text(text):
     # Define additional punctuation characters to remove
     additional_punctuation = ['’']
