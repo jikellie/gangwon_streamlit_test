@@ -1,5 +1,4 @@
 import streamlit as st
-from streamlit_ace import st_ace
 import pandas as pd
 import nltk
 from nltk.corpus import stopwords
@@ -7,36 +6,7 @@ from nltk.tokenize import word_tokenize
 import string
 from collections import Counter
 
-df = pd.read_csv(r"NER-testing\data\traveleng-cleaned2.csv")
-
-
-def preprocess_text(text):
-    # Define additional punctuation characters to remove
-    additional_punctuation = ['’']
-
-    # Remove punctuation
-    text = text.translate(str.maketrans('', '', string.punctuation + ''.join(additional_punctuation)))
-
-    # Convert text to lowercase
-    text = text.lower()
-
-    # Tokenize text
-    tokens = word_tokenize(text)
-
-    # Remove stopwords
-    custom_stopwords = ["located", "enjoy", "also", "place", "visitors", "area", "various", "offers", "many", "well",
-                        "including", "gangwondo", "korea", "one"]
-    stop_words = set(stopwords.words('english')).union(custom_stopwords)
-
-    tokens = [token for token in tokens if token not in stop_words]
-
-    # Extract unique tags
-    unique_tags = list(set(tokens))
-
-    return unique_tags
-
-# Apply preprocessing to the 'overview' column
-df['tags'] = df['overview'].apply(preprocess_text)
+df = pd.read_csv(r"travel+tags.csv")
 
 #### streamlit from here ###
 
