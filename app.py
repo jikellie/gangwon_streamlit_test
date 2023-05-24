@@ -24,7 +24,7 @@ def preprocess_text(text):
 
     # Remove stopwords
     custom_stopwords = ["located", "enjoy", "also", "place", "visitors", "area", "various", "offers", "many", "well",
-                        "including", "gangwondo", "korea", "one"]
+                        "including"]
     stop_words = set(stopwords.words('english')).union(custom_stopwords)
 
     tokens = [token for token in tokens if token not in stop_words]
@@ -34,15 +34,10 @@ def preprocess_text(text):
 
     return unique_tags
 
+
 # Apply preprocessing to the 'overview' column
 df['tags'] = df['overview'].apply(preprocess_text)
 
-#### streamlit from here ###
-
-# Get all unique tags from the 'tags' column
-all_tags = set(tag for tags in df['tags'] for tag in tags)
-
-# Define the tag search function
 def tag_search(query, dataframe):
     query_tags = query.split()  # Split the query into individual tags
 
@@ -51,24 +46,18 @@ def tag_search(query, dataframe):
 
     return results
 
-# Define the Streamlit app
 def main():
     # Set app title
     st.title("Tag Search App")
 
-    # Create a search bar with autocomplete
-    query = st.multiselect(
-        "Enter tags to search",
-        options=list(all_tags),
-        default=[],
-        key="search_tags"
-    )
+    # Create a search bar
+    query = st.text_input("Enter tags to search", "")
 
     # Perform search and display results
     if query:
-        search_results = tag_search(' '.join(query), df)
+        search_results = tag_search(query, df)
         st.dataframe(search_results)
 
-# Run the Streamlit app
+
 if __name__ == '__main__':
     main()
