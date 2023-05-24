@@ -1,4 +1,3 @@
-pip uninstall nltk
 pip install nltk
 
 import streamlit as st
