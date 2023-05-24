@@ -1,3 +1,6 @@
+pip uninstall nltk
+pip install nltk
+
 import streamlit as st
 import pandas as pd
 from nltk.corpus import stopwords
