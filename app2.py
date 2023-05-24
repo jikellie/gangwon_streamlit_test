@@ -6,7 +6,7 @@ from nltk.tokenize import word_tokenize
 import string
 from collections import Counter
 
-df = pd.read_csv(r"NER-testing\data\traveleng-cleaned2.csv")
+df = pd.read_csv(r"traveleng-cleaned2.csv")
 
 nltk.download('stopwords')
 
