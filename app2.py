@@ -7,6 +7,7 @@ from collections import Counter
 
 df = pd.read_csv(r"NER-testing\data\traveleng-cleaned2.csv")
 
+nltk.download('stopwords')
 
 def preprocess_text(text):
     # Define additional punctuation characters to remove
