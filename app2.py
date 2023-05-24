@@ -7,6 +7,7 @@ import string
 from collections import Counter
 import nltk
 nltk.download('punkt')
+nltk.download('stopwords')
 
 df = pd.read_csv(r"traveleng-cleaned2.csv")
 
