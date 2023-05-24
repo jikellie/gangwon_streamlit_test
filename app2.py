@@ -56,7 +56,7 @@ def tag_search(query, dataframe):
 # Define the Streamlit app
 def main():
     # Set app title
-    st.title("Tag Search App")
+    st.title("Gangwon-do travel tag search")
 
     # Create a search bar with autocomplete
     query = st.multiselect(
