@@ -5,6 +5,8 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 import string
 from collections import Counter
+import nltk
+nltk.download('punkt')
 
 df = pd.read_csv(r"traveleng-cleaned2.csv")
 
